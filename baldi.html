@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVD Screensaver</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevent scrollbars */
+            background-color: black; /* Background color of the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dvd-logo {
+            position: absolute;
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://media.tenor.com/Lnl8OYUux00AAAAi/baldi-clyde.gif" alt="DVD Logo" class="dvd-logo" id="dvdLogo">
+
+    <script>
+        let dvdLogo = document.getElementById('dvdLogo');
+        let container = document.body;
+
+        let dx = 2; // Horizontal speed
+        let dy = 2; // Vertical speed
+        let x = Math.random() * (container.clientWidth - dvdLogo.width);
+        let y = Math.random() * (container.clientHeight - dvdLogo.height);
+
+        function moveLogo() {
+            x += dx;
+            y += dy;
+
+            if (x + dvdLogo.width >= container.clientWidth || x <= 0) {
+                dx *= -1; // Reverse direction on X axis
+            }
+            if (y + dvdLogo.height >= container.clientHeight || y <= 0) {
+                dy *= -1; // Reverse direction on Y axis
+            }
+
+            dvdLogo.style.left = x + 'px';
+            dvdLogo.style.top = y + 'px';
+
+            requestAnimationFrame(moveLogo);
+        }
+
+        dvdLogo.style.left = x + 'px';
+        dvdLogo.style.top = y + 'px';
+
+        requestAnimationFrame(moveLogo);
+    </script>
+</body>
+</html>
